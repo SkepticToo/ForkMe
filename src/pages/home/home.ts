@@ -10,5 +10,7 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
 
   }
-
+  openDashboard(): void {
+    this.navCtrl.push("DashboardPage");
+  }
 }
