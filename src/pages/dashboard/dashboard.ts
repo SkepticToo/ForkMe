@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 
-/**
- * Generated class for the DashboardPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-dashboard',
@@ -14,10 +8,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DashboardPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  dualValue: any;
+  minRangeVal: number;
+  maxRangeVal: number;
+  steps: number;
+  lowVal: number;
+  highVal: number;
+  midRangeVal: number;
+
+  constructor() {
+    this.minRangeVal = 0;
+    this.maxRangeVal = 100;
+    this.steps = 5;
+    this.lowVal = this.minRangeVal;
+    this.highVal = this.maxRangeVal
+    this.midRangeVal = this.highVal / 2;
+    this.dualValue = {lower: this.lowVal, upper: this.highVal};
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DashboardPage');
+  updateRange(): void {
+    this.dualValue = {lower: this.lowVal, upper: this.highVal};
+  }
+
+  adjustLowRange(val: number) {
+    // need to ensure >= minRangeVal && <= midRangeVal
+    this.lowVal += (val * this.steps);
+    this.updateRange();
+  }
+
+  adjustHighRange(val: number) {
+    // need to ensure <= maxRangeVal && >= midRangeVal
+    this.highVal += (val * this.steps);
+    this.updateRange();
   }
 }

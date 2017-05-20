@@ -1,18 +1,32 @@
-<!--
-  Generated template for the DashboardPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>dashboard</ion-title>
+    <ion-title>Dashboard</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+  <ion-item>
+    <ion-label>Adjust Range</ion-label>
+    <ion-range dualKnobs="true" [(ngModel)]="dualValue"
+                                min={{minRangeVal}}
+                                max={{maxRangeVal}}
+                                step={{steps}}
+                                snaps="true" pin="true">
+      <ion-label range-left>{{minRangeVal}}</ion-label>
+      <ion-label range-right>{{maxRangeVal}}</ion-label>
+    </ion-range>
+  </ion-item>
+
+  <ion-label>Low Val: {{lowVal}}</ion-label>
+  <ion-item>
+    <ion-icon name="add-circle"    (click)="adjustLowRange(1)"> Low Range</ion-icon>
+    <ion-icon name="remove-circle" (click)="adjustLowRange(-1)"> Low Range</ion-icon>
+  </ion-item>
+
+  <ion-label>High Val: {{highVal}}</ion-label>
+  <ion-item>
+    <ion-icon name="add-circle"    (click)="adjustHighRange(1)"> High Range</ion-icon>
+    <ion-icon name="remove-circle" (click)="adjustHighRange(-1)"> High Range</ion-icon>
+  </ion-item>
 
 </ion-content>
