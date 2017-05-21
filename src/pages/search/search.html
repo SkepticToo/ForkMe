@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>User Search</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>UserName</ion-label>
+    <ion-input type="text" [(ngModel)]="username"></ion-input>
+  </ion-item>
+
+  <ion-fab bottom right>
+    <button ion-fab (click)="getUserInfo()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>
