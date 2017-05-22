@@ -11,7 +11,8 @@
                                 min={{minRangeVal}}
                                 max={{maxRangeVal}}
                                 step={{steps}}
-                                snaps="true" pin="true">
+                                snaps="true" pin="true"
+                                (ionChange)="handleChange()">
       <ion-label range-left>{{minRangeVal}}</ion-label>
       <ion-label range-right>{{maxRangeVal}}</ion-label>
     </ion-range>
