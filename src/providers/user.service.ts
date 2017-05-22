@@ -12,8 +12,13 @@ export class UserServiceProvider {
 
   constructor() {}
 
+  getUsers(): User[] {
+        return USER_LIST;
+    }
+
   mockGetUserInformation(username: string): Observable<User> {
     return Observable.of(USER_LIST.filter(user => user.name === username)[0]);
+
   }
 
 }

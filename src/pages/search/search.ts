@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/user.interface';
+import {UserServiceProvider} from '../../providers/user.service';
 
 @IonicPage()
 @Component({
@@ -12,7 +13,8 @@ export class SearchPage {
   username: String;
   items: User[];
 
-  constructor(private navCtrl: NavController, private navParams: NavParams) {
+  constructor(private navCtrl: NavController, private navParams: NavParams,
+  private userServiceProvider: UserServiceProvider) {
       this.items = this.initializeUsers();
   }
 
@@ -21,16 +23,7 @@ export class SearchPage {
   }
 
   initializeUsers() : User[]{
-  const userList: User[] = [
-  {
-   name: "FooBar",
-   email: "foobar@test.com"
-  },
-  {
-    name : "BizBaz",
-    email: "bizbaz@test.com"
-  }
-  ]
+    const userList: User[] = this.userServiceProvider.getUsers();
   return userList;
   }
 
