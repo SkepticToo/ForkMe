@@ -14,34 +14,26 @@ export class SearchPage {
   items: User[];
 
   constructor(private navCtrl: NavController, private navParams: NavParams,
-  private userServiceProvider: UserServiceProvider) {
-      this.items = this.initializeUsers();
+              private userServiceProvider: UserServiceProvider) {
+                this.userServiceProvider.mockGetAllUsers().subscribe((data: User[]) => this.items = data);
   }
 
   getUserInfo(): void {
     this.navCtrl.push('SearchResultsPage', {username: this.username});
   }
 
-  initializeUsers() : User[]{
-    const userList: User[] = this.userServiceProvider.getUsers();
-  return userList;
-  }
+  getUsers(ev: any): void {
+    // Reset items back to all of the items
+    this.userServiceProvider.mockGetAllUsers().subscribe((data: User[]) => this.items = data);
 
-onCancel (): void {
-  this.items = this.initializeUsers();
-}
-  getUsers( ev:any): void {
-  // Reset items back to all of the items
-  this.items = this.initializeUsers();
+    // set val to the value of the ev target
+    var val = ev.target.value;
 
-// set val to the value of the ev target
-var val = ev.target.value;
-
-// if the value is an empty string don't filter the items
-if (val && val.trim() != '') {
-  this.items = this.items.filter((item) => {
-    return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
-  })
-}
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.items = this.items.filter((item) => {
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
   }
 }
