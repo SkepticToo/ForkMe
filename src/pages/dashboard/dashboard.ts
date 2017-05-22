@@ -21,23 +21,33 @@ export class DashboardPage {
     this.maxRangeVal = 100;
     this.steps = 5;
     this.lowVal = this.minRangeVal;
-    this.highVal = this.maxRangeVal
+    this.highVal = this.maxRangeVal;
     this.midRangeVal = this.highVal / 2;
     this.dualValue = {lower: this.lowVal, upper: this.highVal};
   }
 
   updateRange(): void {
+    if (this.lowVal < 0) {
+      this.lowVal = 0;
+    }
+    if (this.highVal > 100) {
+      this.highVal = 100;
+    }
+
     this.dualValue = {lower: this.lowVal, upper: this.highVal};
   }
 
+  handleChange(): void {
+    this.lowVal = this.dualValue.lower;
+    this.highVal = this.dualValue.upper;
+  }
+
   adjustLowRange(val: number) {
-    // need to ensure >= minRangeVal && <= midRangeVal
     this.lowVal += (val * this.steps);
     this.updateRange();
   }
 
   adjustHighRange(val: number) {
-    // need to ensure <= maxRangeVal && >= midRangeVal
     this.highVal += (val * this.steps);
     this.updateRange();
   }
