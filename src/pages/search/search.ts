@@ -37,7 +37,6 @@ export class SearchPage {
 onCancel (): void {
   this.items = this.initializeUsers();
 }
-
   getUsers( ev:any): void {
   // Reset items back to all of the items
   this.items = this.initializeUsers();
