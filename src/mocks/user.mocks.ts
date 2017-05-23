@@ -8,6 +8,10 @@ const userList: User[] = [
   {
     name: "BizBaz",
     email: "bizbaz@test.com"
+  },
+  {
+    name: "BingBang",
+    email: "bingbang@test.com"
   }
 ]
 

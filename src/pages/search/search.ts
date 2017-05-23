@@ -11,11 +11,13 @@ import {UserServiceProvider} from '../../providers/user.service';
 export class SearchPage {
 
   username: String;
+  users: User[];
   items: User[];
 
   constructor(private navCtrl: NavController, private navParams: NavParams,
               private userServiceProvider: UserServiceProvider) {
-                this.userServiceProvider.mockGetAllUsers().subscribe((data: User[]) => this.items = data);
+                this.userServiceProvider.mockGetAllUsers().subscribe((data: User[]) => this.users = data);
+                this.items = this.users;
   }
 
   getUserInfo(): void {
@@ -24,7 +26,8 @@ export class SearchPage {
 
   getUsers(ev: any): void {
     // Reset items back to all of the items
-    this.userServiceProvider.mockGetAllUsers().subscribe((data: User[]) => this.items = data);
+    //this.userServiceProvider.mockGetAllUsers().subscribe((data: User[]) => this.items = data);
+    this.items = this.users;
 
     // set val to the value of the ev target
     var val = ev.target.value;
