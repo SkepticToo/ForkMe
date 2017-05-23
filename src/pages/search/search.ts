@@ -19,7 +19,10 @@ export class SearchPage {
                 this.userServiceProvider.mockGetAllUsers().subscribe((data: User[]) => this.users = data);
                 this.items = this.users;
   }
-
+  
+  getUser(item: User): void {
+    this.navCtrl.push('SearchResultsPage', {username: item.name});
+  }
   getUserInfo(): void {
     this.navCtrl.push('SearchResultsPage', {username: this.username});
   }
