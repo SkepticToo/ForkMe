@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, ToastController  } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -16,7 +16,7 @@ export class DashboardPage {
   highVal: number;
   midRangeVal: number;
 
-  constructor() {
+  constructor(private toastCtrl: ToastController) {
     this.minRangeVal = 0;
     this.maxRangeVal = 100;
     this.steps = 5;
@@ -26,13 +26,26 @@ export class DashboardPage {
     this.dualValue = {lower: this.lowVal, upper: this.highVal};
   }
 
+  showToastWithCloseButton(msg: string) {
+    const toast = this.toastCtrl.create({
+      message: msg,
+      showCloseButton: true,
+      closeButtonText: 'Ok'
+    });
+    toast.present();
+  }
+
   updateRange(): void {
     if (this.lowVal < 0) {
       this.lowVal = 0;
+      this.showToastWithCloseButton('Low value cannot be < 0.');
     }
     if (this.highVal > 100) {
+      this.showToastWithCloseButton('High value cannot be > 100.');
       this.highVal = 100;
     }
+
+    // ToDo: Check to ensure low <= high && high >= low so knobs don't overlap
 
     this.dualValue = {lower: this.lowVal, upper: this.highVal};
   }

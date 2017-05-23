@@ -7,24 +7,27 @@
 <ion-content padding>
   <ion-item>
     <ion-label>Adjust Range</ion-label>
-    <ion-range dualKnobs="true" [(ngModel)]="dualValue"
-                                min={{minRangeVal}}
-                                max={{maxRangeVal}}
-                                step={{steps}}
-                                snaps="true" pin="true"
-                                (ionChange)="handleChange()">
+    <ion-range [(ngModel)]="dualValue"
+               dualKnobs="true"
+               min={{minRangeVal}}
+               max={{maxRangeVal}}
+               step={{steps}}
+               snaps="true" pin="true"
+               (ionChange)="handleChange()">
       <ion-label range-left>{{minRangeVal}}</ion-label>
       <ion-label range-right>{{maxRangeVal}}</ion-label>
     </ion-range>
   </ion-item>
 
-  <ion-label>Low Val: {{lowVal}}</ion-label>
+  <ion-label>Low Val:</ion-label>
+  <ion-badge>{{lowVal}}</ion-badge>
   <ion-item>
     <ion-icon name="add-circle"    (click)="adjustLowRange(1)"> Low Range</ion-icon>
     <ion-icon name="remove-circle" (click)="adjustLowRange(-1)"> Low Range</ion-icon>
   </ion-item>
 
-  <ion-label>High Val: {{highVal}}</ion-label>
+  <ion-label>High Val:</ion-label>
+  <ion-badge>{{highVal}}</ion-badge>
   <ion-item>
     <ion-icon name="add-circle"    (click)="adjustHighRange(1)"> High Range</ion-icon>
     <ion-icon name="remove-circle" (click)="adjustHighRange(-1)"> High Range</ion-icon>
