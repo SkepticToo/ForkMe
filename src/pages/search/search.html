@@ -11,7 +11,7 @@
   <ion-searchbar (ionInput)="getUsers($event)"
                  [showCancelButton]="true"></ion-searchbar>
   <ion-list>
-    <ion-item class="itemList" *ngFor="let item of items" (click)="getUser(item)">
+    <ion-item class="itemList" *ngFor="let item of items" (click)="presentEditUser(item)">
       {{ item.name }}
     </ion-item>
   </ion-list>

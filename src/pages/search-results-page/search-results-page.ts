@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { UserServiceProvider } from '../../providers/user.service';
 import { User } from '../../models/user.interface';
 
@@ -14,7 +14,12 @@ export class SearchResultsPage {
   username: string;
   user: User;
 
-  constructor(private userService: UserServiceProvider, private navCtrl: NavController, private navParams: NavParams) {}
+  constructor(
+    private userService: UserServiceProvider,
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private viewCtrl: ViewController
+    ) {}
 
   getUserInformation(): void {
     this.userService.mockGetUserInformation(this.username).subscribe((data: User) => this.user = data);
@@ -25,6 +30,10 @@ export class SearchResultsPage {
     if (this.username) {
       this.getUserInformation();
     }
+  }
+
+  cancel(): void {
+    this.viewCtrl.dismiss();
   }
 }
 
