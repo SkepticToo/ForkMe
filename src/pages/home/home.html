@@ -6,22 +6,21 @@
 
 <ion-content padding>
   <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
-  <ion-card (click)="openPage('DashboardPage')">
-    <ion-card-header>
-      Dashboard
-    </ion-card-header>
-    <ion-icon name="cog"></ion-icon>
-  </ion-card>
-  <ion-card (click)="openPage('SearchPage')">
-    <ion-icon name="search"> User Search</ion-icon>
-  </ion-card>
-  <button ion-button block (click)="presentLoading()">Show Loading</button>
+
+      <ion-card (click)="openPage('DashboardPage')">
+
+        <ion-card-header>
+          <ion-icon name="cog" class="big-icon"> Dashboard</ion-icon>
+        </ion-card-header>
+      </ion-card>
+
+      <ion-card (click)="openPage('SearchPage')">
+        <ion-card-header>
+          <ion-icon name="search" class="big-icon"> User Search</ion-icon>
+        </ion-card-header>
+
+      </ion-card>
+
+      <button ion-button block (click)="presentLoading()">Show Loading</button>
+
 </ion-content>
