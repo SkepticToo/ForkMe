@@ -38,11 +38,10 @@ export class SearchPage {
 
   getUsers(ev: any): void {
     // Reset items back to all of the items
-    //this.userServiceProvider.mockGetAllUsers().subscribe((data: User[]) => this.items = data);
     this.items = this.users;
 
     // set val to the value of the ev target
-    var val = ev.target.value;
+    let val = ev.target.value;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
