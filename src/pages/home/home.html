@@ -15,10 +15,13 @@
     update any existing page or create new pages.
   </p>
   <ion-card (click)="openPage('DashboardPage')">
-    <ion-icon name="cog"> Dashboard</ion-icon>
+    <ion-card-header>
+      Dashboard
+    </ion-card-header>
+    <ion-icon name="cog"></ion-icon>
   </ion-card>
   <ion-card (click)="openPage('SearchPage')">
     <ion-icon name="search"> User Search</ion-icon>
   </ion-card>
-  <button ion-button block (click)="presentLoading()">Show Loading</button>  
+  <button ion-button block (click)="presentLoading()">Show Loading</button>
 </ion-content>
